@@ -1,0 +1,120 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Add jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
+            width: 150px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            margin-left: 130px;
+            padding: 5px 10px;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Registration Form</h2>
+
+    <form id="registrationForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="FirstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="LastName" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="Password" required><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="ConfirmPassword" required><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="PhoneNumber" required><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="DateOfBirth" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $('#registrationForm').submit(function (event) {
+                event.preventDefault();
+
+                // Validate that password and confirm password match
+                var password = $('#password').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                if (password !== confirmPassword) {
+                    $('#message').html("<p style='color:red;'>Passwords do not match!</p>");
+                    return false;
+                }
+
+                // Create the data object to be sent to the server
+                var formData = {
+                    FirstName: $('#firstName').val(),
+                    LastName: $('#lastName').val(),
+                    Email: $('#email').val(),
+                    Password: password,
+                    ConfirmPassword: confirmPassword,
+                    PhoneNumber: $('#phoneNumber').val(),
+                    DateOfBirth: $('#dob').val()
+                };
+
+                // Send the form data via an AJAX request (can be adapted to your API)
+                $.ajax({
+                    url: '/registration',  // Replace with your backend endpoint
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        alert('Registration successful!');  
+                        // $('#message').html("<p style='color:green;'>Registration successful!</p>");
+                    },
+                    error: function (error) {
+                        $('#message').html("<p style='color:red;'>Error: " + error.responseText + "</p>");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
