@@ -22,10 +22,13 @@ builder.Services.AddScoped<IRegistrationRepository, RegistrationRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>(); 
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 
+<<<<<<< HEAD
 // for ProductCatagory service and repository
 builder.Services.AddScoped<IProductCatagoryService, ProductCatagoryService>();
 builder.Services.AddScoped<IProductCatagoryRepository, ProductCatagoryRepository>();
 
+=======
+>>>>>>> cd722e539699a2e9421cad6fa6332a486ddb8477
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
