@@ -22,7 +22,6 @@ namespace BasicInventoryManagementSystem.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-<<<<<<< HEAD
             modelBuilder.Entity("BasicInventoryManagementSystem.Mapper.LoginMapper.Login", b =>
                 {
                     b.Property<string>("Email")
@@ -100,8 +99,6 @@ namespace BasicInventoryManagementSystem.Migrations
                     b.ToTable("ProductCatagories");
                 });
 
-=======
->>>>>>> cd722e539699a2e9421cad6fa6332a486ddb8477
             modelBuilder.Entity("BasicInventoryManagementSystem.Models.Registration", b =>
                 {
                     b.Property<int>("Id")
@@ -141,7 +138,6 @@ namespace BasicInventoryManagementSystem.Migrations
 
                     b.ToTable("Registrations");
                 });
-<<<<<<< HEAD
 
             modelBuilder.Entity("BasicInventoryManagementSystem.Models.Product", b =>
                 {
@@ -153,8 +149,6 @@ namespace BasicInventoryManagementSystem.Migrations
 
                     b.Navigation("ProductCategory");
                 });
-=======
->>>>>>> cd722e539699a2e9421cad6fa6332a486ddb8477
 #pragma warning restore 612, 618
         }
     }

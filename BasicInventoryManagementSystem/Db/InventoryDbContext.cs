@@ -14,11 +14,9 @@ namespace BasicInventoryManagementSystem.Db
 
         public DbSet<Registration> Registrations { get; set; }
         public DbSet<Login> Logins { get; set; }
-<<<<<<< HEAD
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCatagory> ProductCatagories { get; set; }
-=======
->>>>>>> cd722e539699a2e9421cad6fa6332a486ddb8477
+
 
 
 

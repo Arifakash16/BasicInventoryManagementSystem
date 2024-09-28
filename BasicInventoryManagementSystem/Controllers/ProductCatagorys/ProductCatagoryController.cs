@@ -19,38 +19,45 @@ namespace BasicInventoryManagementSystem.Controllers.ProductCatagorys
         {
             return View();
         }
+        
+        public IActionResult CreateProductCategories()
+        {
+            return View();
+        }
+
         // create productCatagory
         // http://localhost:2038/productcatagory/create
-
-        [Route("create")]
         [HttpPost]
-        public ActionResult<string> CreateProductCategories(ProductCatagoryMapper productCatagoryMapper)
+        public IActionResult ICreateProductCategories(ProductCatagory productCatagory)
         {
-            ProductCatagory productCatagory = new ProductCatagory();
+            //ProductCatagory productCatagory = new ProductCatagory();
 
-            productCatagory.Name = productCatagoryMapper.Name;
-            productCatagory.IsActive=productCatagoryMapper.IsActive;
+            //productCatagory.Name = productCatagoryMapper.Name;
+            //productCatagory.IsActive = productCatagoryMapper.IsActive;
 
             _productCatagoryService.productCatagory(productCatagory);
-            return Ok("successfully inserted!");
+            return RedirectToAction("GetProductCategories");
         }
 
         // get all productCatagory
         // http://localhost:2038/productcatagory/get
 
-        [Route("get")]
-        [HttpGet]
-        public ActionResult<List<ProductCatagory>> GetProductCategories()
+        
+        [HttpGet("get")]
+        public IActionResult GetProductCategories()
         {
             List<ProductCatagory> getAllProductCatagories = _productCatagoryService.UpdateProductCatagoryService();
-            return Ok(getAllProductCatagories); // return all catagories as a JSON response
+            //return Ok(getAllProductCatagories); // return all catagories as a JSON response
+            var data = getAllProductCatagories;
+            return View(data);
+
         }
 
         // updated productCatagory
         // http://localhost:2038/productcatagory/update/{id}
 
         [HttpPut("update/{id}")]
-        public ActionResult<ProductCatagory> UpdatedProductCategories(ProductCatagoryMapper productCatagoryMapper, String id)
+        public IActionResult UpdatedProductCategories(ProductCatagoryMapper productCatagoryMapper, String id)
         {
             ProductCatagory updatedProductCatagories = _productCatagoryService.UpdateProductCatagoryService(productCatagoryMapper, id);
             return Ok(updatedProductCatagories); // return all catagories as a JSON response
