@@ -19,7 +19,8 @@ namespace BasicInventoryManagementSystem.Controllers.ProductCatagorys
         {
             return View();
         }
-        
+
+        [HttpGet]
         public IActionResult CreateProductCategories()
         {
             return View();
@@ -27,16 +28,18 @@ namespace BasicInventoryManagementSystem.Controllers.ProductCatagorys
 
         // create productCatagory
         // http://localhost:2038/productcatagory/create
-        [HttpPost]
-        public IActionResult ICreateProductCategories(ProductCatagory productCatagory)
-        {
-            //ProductCatagory productCatagory = new ProductCatagory();
 
-            //productCatagory.Name = productCatagoryMapper.Name;
-            //productCatagory.IsActive = productCatagoryMapper.IsActive;
+        [HttpPost("create")]
+        public IActionResult ICreateProductCategories(ProductCatagoryMapper productCatagoryMapper)
+        {
+            ProductCatagory productCatagory = new ProductCatagory();
+
+            productCatagory.Name = productCatagoryMapper.Name;
+            productCatagory.IsActive = productCatagoryMapper.IsActive;
 
             _productCatagoryService.productCatagory(productCatagory);
-            return RedirectToAction("GetProductCategories");
+             return RedirectToAction("GetProductCategories");
+            //return View();
         }
 
         // get all productCatagory

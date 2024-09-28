@@ -13,7 +13,7 @@ namespace BasicInventoryManagementSystem.Db
         }
 
         public DbSet<Registration> Registrations { get; set; }
-        public DbSet<Login> Logins { get; set; }
+		public DbSet<Login> Logins { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCatagory> ProductCatagories { get; set; }
 

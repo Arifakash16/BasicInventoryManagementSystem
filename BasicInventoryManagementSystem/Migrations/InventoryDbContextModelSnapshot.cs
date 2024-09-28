@@ -15,7 +15,7 @@ namespace BasicInventoryManagementSystem.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
+
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
@@ -149,7 +149,7 @@ namespace BasicInventoryManagementSystem.Migrations
 
                     b.Navigation("ProductCategory");
                 });
-#pragma warning restore 612, 618
+
         }
     }
 }

@@ -1,0 +1,106 @@
+﻿
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Add jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+
+
+    <h1>Create a Product Category</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form id="productCategoryForm">
+                <!-- Product Category Name Input -->
+                <label for="Name">Product Category Name</label>
+                <input type="text" id="Name" name="Name" required><br>
+
+                <!-- IsActive Input (as a dropdown for "true"/"false" as strings) -->
+                <label for="IsActive">State</label> <br>
+                <select id="IsActive" name="IsActive" required>
+                    <option value="">Select Status</option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select><br><br>
+
+                <!-- Submit Button -->
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+
+    <!-- Link to go back to the list of categories -->
+    <br><br>
+    <div>
+        <a asp-action="GetProductCategories" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    <!-- Inline JavaScript to handle form submission -->
+    <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $('#productCategoryForm').submit(function (event) {
+                event.preventDefault();
+
+                // Validate that password and confirm password match
+                var name = $('#Name').val();
+                var isActive = $('#IsActive').val();
+
+                // Create the data object to be sent to the server
+                var formData = {
+                    Name: $('#Name').val(),
+                    IsActive: $('#IsActive').val(),
+                };
+
+                // Send the form data via an AJAX request (can be adapted to your API)
+                $.ajax({
+                    url: '/ProductCatagory/create',  // Replace with your backend endpoint
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        alert('successfully added!');
+                        // $('#message').html("<p style='color:green;'>Registration successful!</p>");
+                        //window.location.href = '/ProductCatagory/'; // Redirect
+                    },
+                    error: function (error) {
+                        $('#message').html("<p style='color:red;'>Error: " + error.responseText + "</p>");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

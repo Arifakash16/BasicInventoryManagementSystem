@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BasicInventoryManagementSystem.Models.ProductCatagory>
+
+@{
+    ViewData["Title"] = "GetProductCategories";
+}
+
+<h1>Product Categories List</h1>
+
+<a asp-action="CreateProductCategories" asp-controller="ProductCatagory" method="GET">ADD Catagory</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Catagory Id</th>
+            <th>Name</th>
+            <th>State</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductCatagoryId</td>
+                <td>@item.Name</td>
+                <td>@item.IsActive</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.ProductCatagoryId">Edit</a>
+                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.ProductCatagoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
