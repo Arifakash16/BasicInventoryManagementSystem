@@ -4,32 +4,70 @@
     ViewData["Title"] = "GetProductCategories";
 }
 
-<h1>Product Categories List</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Categories List</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Bootstrap CSS for styling (optional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
 
-<a asp-action="CreateProductCategories" asp-controller="ProductCatagory" method="GET">ADD Catagory</a>
+    <div class="container mt-5">
+        <h1>Product Categories List</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product Catagory Id</th>
-            <th>Name</th>
-            <th>State</th>
+        <!-- Form to add or update product categories -->
+        <form id="categoryForm" method="POST" action="/ProductCatagory/CreateOrUpdate">
+            <!-- Button to add a new category -->
+            <button class="btn btn-primary mb-3" type="button" id="addCatagoryBtn">ADD Catagory</button>
 
-        </tr>
-    </thead>
+            <!-- Table to display product categories -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product Category Id</th>
+                        <th>Name</th>
+                        <th>State</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ProductCatagoryId</td>
+                            <td>@item.Name</td>
+                            <td>@item.IsActive</td>
+                            <td>
+                                <!-- Link to edit the product category -->
+                                <a class="btn btn-warning" asp-action="UpdatedProductCategories" asp-controller="ProductCatagory" asp-route-id="@item.ProductCatagoryId">Edit</a>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductCatagoryId</td>
-                <td>@item.Name</td>
-                <td>@item.IsActive</td>
-                <td>
-                    <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.ProductCatagoryId">Edit</a>
-                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.ProductCatagoryId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                <!-- Link to delete the product category -->
+                                <a class="btn btn-warning" asp-action="DeleteProductCatagories" asp-controller="ProductCatagory" asp-route-id="@item.ProductCatagoryId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+
+        <!-- Error message container (if needed for login form) -->
+        <div id="errorMessage" class="text-danger" style="display: none;"></div>
+    </div>
+
+    <!-- jQuery script to handle login and redirection logic -->
+    <script>
+        $(document).ready(function () {
+            // Redirect to the registration page when register button is clicked
+            $('#addCatagoryBtn').click(function () {
+                window.location.href = '/productcatagory/create'; // Adjust this URL to your registration action
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -7,17 +7,17 @@
     <title>Registration Form</title>
     <!-- Add jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
 </head>
 <body>
 
 
-    <h1>Create a Product Category</h1>
+    <h1>Update a Product Category</h1>
 
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="CreateProductCategories" asp-controller="ProductCatagory" id="productCategoryForm">
+            <form asp-action="UpdatedProductCategories" asp-controller="ProductCatagory" id="productCategoryForm">
                 <!-- Product Category Name Input -->
                 <label for="Name">Product Category Name</label>
                 <input type="text" id="Name" name="Name" required><br>
@@ -37,7 +37,8 @@
     </div>
 
     <!-- Link to go back to the list of categories -->
-    <br><br>
+    <br>
+    <br>
     <div>
         <a asp-action="GetProductCategories" class="btn btn-secondary">Back to List</a>
     </div>
