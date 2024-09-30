@@ -4,6 +4,7 @@ namespace BasicInventoryManagementSystem.Models
 {
     public class ProductCatagory
     {
+
         [Key]    
         public string ProductCatagoryId { get; set; } // Primary key
 

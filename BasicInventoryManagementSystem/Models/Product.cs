@@ -4,6 +4,7 @@ namespace BasicInventoryManagementSystem.Models
 {
     public class Product
     {
+
         [Key]
         public int Id { get; set; } // Primary key
 
@@ -21,7 +22,6 @@ namespace BasicInventoryManagementSystem.Models
         [Required]
         public string ProductCategoryId { get; set; } // Foreign key to ProductCategory
 
-        public ProductCatagory ProductCategory { get; set; } // Navigation property for ProductCategory
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Timestamp for creation
 

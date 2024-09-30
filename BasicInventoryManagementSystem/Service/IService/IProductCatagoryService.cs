@@ -7,7 +7,7 @@ namespace BasicInventoryManagementSystem.Service.IService
     {
         public string DeleteProductCatagoryService(String id);
         public ProductCatagory UpdateProductCatagoryService(ProductCatagoryMapper productCatagoryMapper, String id);
-        List<ProductCatagory> UpdateProductCatagoryService();
+        List<ProductCatagory> GetProductCatagoryService();
         public void productCatagory(ProductCatagory productCatagory);
     }
 }

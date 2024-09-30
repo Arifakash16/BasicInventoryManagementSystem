@@ -37,7 +37,7 @@ namespace BasicInventoryManagementSystem.Service.ImplService
         }
 
         // gell all productCatagory
-        public List<ProductCatagory> UpdateProductCatagoryService()
+        public List<ProductCatagory> GetProductCatagoryService()
         {
             List<ProductCatagory> productCatagories = _productCatagoryRepository.GetProductCatagoryRepository();
             return productCatagories;
@@ -54,7 +54,7 @@ namespace BasicInventoryManagementSystem.Service.ImplService
         // update productCatagory
         public string DeleteProductCatagoryService(String id)
         {
-            return _productCatagoryRepository.deleteProductCatagoryRepository(id);
+            return _productCatagoryRepository.DeleteProductCatagoryRepository(id);
         }
     }
 }

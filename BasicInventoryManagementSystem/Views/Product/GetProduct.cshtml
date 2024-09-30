@@ -1,4 +1,9 @@
-﻿@model IEnumerable<BasicInventoryManagementSystem.Models.ProductCatagory>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<BasicInventoryManagementSystem.Models.Product>
 
 @{
     ViewData["Title"] = "GetProductCategories";
@@ -9,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Categories List</title>
+    <title>Product List</title>
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include Bootstrap CSS for styling (optional) -->
@@ -18,42 +23,38 @@
 <body>
 
     <div class="container mt-5">
-        <h1>Product Categories List</h1>
+        <h1>Product List</h1>
+
 
         <!-- Form to add or update product categories -->
         <form id="categoryForm" method="POST" action="/ProductCatagory/CreateOrUpdate">
-            <!-- Button to add a new category -->
-            <button class="btn btn-primary mb-3" type="button" id="addCatagoryBtn">ADD Catagory</button>
-
             <!-- Table to display product categories -->
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Product Category Id</th>
                         <th>Name</th>
-                        <th>State</th>
-                        <th>Actions</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.ProductCatagoryId</td>
                             <td>@item.Name</td>
-                            <td>@item.IsActive</td>
+                            <td>@item.Description</td>
+                            <td>@item.StockQuantity</td>
+                            <td>@item.Price</td>
                             <td>
+                                <!-- Link to add a product -->
+                                <a class="btn btn-warning" asp-action="CreateProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId">Add Product</a>
+
                                 <!-- Link to edit the product category -->
-                                <a class="btn btn-warning" asp-action="UpdatedProductCategories" asp-controller="ProductCatagory" asp-route-id="@item.ProductCatagoryId">Edit</a>
+                                <a class="btn btn-warning" asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId" asp-route-pId="@item.Id">Edit</a>
 
                                 <!-- Link to delete the product category -->
-                                <a class="btn btn-warning" asp-action="DeleteProductCatagories" asp-controller="ProductCatagory" asp-route-id="@item.ProductCatagoryId">Delete</a>
-                                
-                                <!-- Link to add a product -->
-                                <a class="btn btn-warning" asp-action="CreateProduct" asp-controller="Product" asp-route-id="@item.ProductCatagoryId">Add Product</a>
-
-                                <!-- Link to add a product -->
-                                <a class="btn btn-warning" asp-action="GetProduct" asp-controller="Product" asp-route-id="@item.ProductCatagoryId">Show Product</a>
+                                <a class="btn btn-warning" asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId" asp-route-pId="@item.Id">Delete</a>
 
                             </td>
                         </tr>

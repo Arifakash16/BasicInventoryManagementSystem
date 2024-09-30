@@ -54,7 +54,7 @@ namespace BasicInventoryManagementSystem.Controllers.ProductCatagorys
         [HttpGet("get")]
         public IActionResult GetProductCategories()
         {
-            List<ProductCatagory> getAllProductCatagories = _productCatagoryService.UpdateProductCatagoryService();
+            List<ProductCatagory> getAllProductCatagories = _productCatagoryService.GetProductCatagoryService();
             var data = getAllProductCatagories;
             return View(data);
 

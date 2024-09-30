@@ -54,7 +54,7 @@ namespace BasicInventoryManagementSystem.Repository.ImplRepository
         }
 
         // delete productCatagory
-        public string deleteProductCatagoryRepository(String id)
+        public string DeleteProductCatagoryRepository(String id)
         {
             var productCatagory = _context.ProductCatagories.Find(id);
             if (productCatagory == null)

@@ -27,6 +27,10 @@ builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IProductCatagoryService, ProductCatagoryService>();
 builder.Services.AddScoped<IProductCatagoryRepository, ProductCatagoryRepository>();
 
+// for Product service and repository
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 var app = builder.Build();
 
