@@ -36,6 +36,7 @@
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,7 +49,7 @@
                             <td>@item.Price</td>
                             <td>
                                 <!-- Link to add a product -->
-                                <a class="btn btn-warning" asp-action="CreateProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId">Add Product</a>
+                               <!-- <a class="btn btn-warning" asp-action="CreateProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId">Add Product</a>  -->
 
                                 <!-- Link to edit the product category -->
                                 <a class="btn btn-warning" asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.ProductCategoryId" asp-route-pId="@item.Id">Edit</a>

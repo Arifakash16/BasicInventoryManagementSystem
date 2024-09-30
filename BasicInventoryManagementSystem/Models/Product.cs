@@ -16,7 +16,6 @@ namespace BasicInventoryManagementSystem.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "The price must be greater than zero.")]
         public decimal Price { get; set; } // Product price
 
-        [Required]
         public int StockQuantity { get; set; } // Available stock quantity
 
         [Required]
